@@ -1,0 +1,19 @@
+{
+  "name": "fantasy-nat-sdk",
+  "version": "1.0.3",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "start": "nodemon --watch src -e ts --exec ts-node src/index.ts",
+    "build": "tsc -p tsconfig.json"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "sun",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.23"
+  },
+  "dependencies": {}
+}
