@@ -1,5 +1,5 @@
 import EventEmitter from 'events';
-import { DefaultConfig, config, AskForPortsInfo, LocalServerConfig, FinalLog } from './config/defaultConfig'
+import { DefaultConfig, config, AskForPortsInfo, LocalServerConfig, FinalLog, CustomConfig } from './config/defaultConfig'
 import { tryCallFunction, connectRemoteServer, createServer } from './utils/utils'
 
 interface FantasyNatService {
@@ -11,7 +11,7 @@ interface FantasyNatService {
 class FantasyNatService extends EventEmitter {
     public readonly config: DefaultConfig;
     private exportPorts: Array<AskForPortsInfo> = [];
-    constructor(props: DefaultConfig) {
+    constructor(props: CustomConfig) {
         super()
         this.config = {
             ...config,
@@ -89,6 +89,26 @@ class FantasyNatService extends EventEmitter {
     }
 
 }
+new FantasyNatService(
+    {
+        localServerConfig:
+            [
+                // {
+                //     serverAlias: 'remote',
+                //     ip: '192.168.31.214',
+                //     port: 3389,
+                //     timeout: 5000,
+                //     heartBeat: 5000
+                // },
+                {
+                    serverAlias: 'remote2',
+                    ip: '192.168.31.214',
+                    port: 8080
+                }
+            ]
+
+
+    })
 export {
     FantasyNatService
 }

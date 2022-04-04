@@ -4,7 +4,7 @@ interface LocalServerConfig {
     /**连接本地server超时时间 */
     timeout: number;
     /**连接本地server的心跳频率 */
-    heartBeat: number;
+    heartBeat?: number;
     /**本地server别名 */
     serverAlias: string;
     /**暴露的端口号 */
