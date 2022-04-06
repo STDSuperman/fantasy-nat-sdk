@@ -17,7 +17,6 @@ class FantasyNatService extends EventEmitter {
             ...config,
             ...props
         }
-        this.run()
     }
     public async run(): Promise<void> {
         try {
@@ -85,30 +84,10 @@ class FantasyNatService extends EventEmitter {
             }
         })
         this.emit('final', finalLog)
-        console.log('operation success,click these url to show', finalLog)
+        console.log('translate success,click the url to show', finalLog)
     }
 
 }
-new FantasyNatService(
-    {
-        localServerConfig:
-            [
-                // {
-                //     serverAlias: 'remote',
-                //     ip: '192.168.31.214',
-                //     port: 3389,
-                //     timeout: 5000,
-                //     heartBeat: 5000
-                // },
-                {
-                    serverAlias: 'remote2',
-                    ip: '192.168.31.214',
-                    port: 8080
-                }
-            ]
-
-
-    })
 export {
     FantasyNatService
 }

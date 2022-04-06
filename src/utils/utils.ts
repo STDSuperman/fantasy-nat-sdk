@@ -31,18 +31,21 @@ export async function connectRemoteServer(host: string, port: number): Promise<A
         })
     })
 }
-
 export async function createServer(exportsLocalPort: number, localServicePort: number, localServiceHost: string): Promise<Boolean> {
     return new Promise((resolve, reject) => {
         const server = net.createServer((s) => {
-            console.log('rrrrrrrrrrrrrrrrrrr')
-            const conn = net.connect({
-                port: localServicePort,
-                host: localServiceHost
-            }, () => {
-                s.pipe(conn).pipe(s)
+            const connection=net.connect({
+                host:localServiceHost,
+                port:localServicePort
+            },()=>{
+                s.pipe(connection).pipe(s)
             })
-
+            connection.on('error',()=>{
+                connection.end()
+            })
+            s.on('error',()=>{
+                s.end()
+            })
         }).listen(exportsLocalPort)
         server.on('listening', () => {
             resolve(true)

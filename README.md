@@ -1,7 +1,7 @@
 # NAT-SDK
 - 用来把本地server暴露在公网的sdk
 - heartBeat还没做，下一版再做,配置上也无所谓
-- **重要！！！需要设置路由器的DMZ，将本机内网ip暴露出去，否则会被路由器拦截**
+- **重要！！！如果第一次使用不成功，需要设置路由器的DMZ，将本机内网ip暴露出去，否则会被路由器拦截**
 ```js
 let f = new FantasyNatService(
     {
@@ -25,6 +25,8 @@ let f = new FantasyNatService(
         ]
     }
 )
+//启动
+f.run()
 //连接到公网主机成功
 f.on('connectRemoteSuc', (data) => {
     console.log('hi', data)
