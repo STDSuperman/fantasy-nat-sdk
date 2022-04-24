@@ -84,10 +84,11 @@ class FantasyNatService extends EventEmitter {
             }
         })
         this.emit('final', finalLog)
-        console.log('translate success,click the url to show', finalLog)
+        console.log(`[${new Date().toLocaleString()}]  translate success,click the url to show`, finalLog)
     }
 
 }
 export {
-    FantasyNatService
+    FantasyNatService,
+    CustomConfig
 }

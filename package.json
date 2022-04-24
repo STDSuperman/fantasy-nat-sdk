@@ -1,15 +1,22 @@
 {
-  "name": "fantasy-nat-sdk",
+  "name": "fantasy-nat-tool",
   "version": "1.0.0",
-  "description": "",
+  "description": "a tool for NAT service",
   "main": "./dist/index.js",
   "scripts": {
-    "start": "nodemon --watch src -e ts --exec ts-node src/index.ts",
+    "start": "ts-node test/test.ts",
+    "watch": "nodemon --watch src -e ts --exec ts-node test/test.ts",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [
-    "typescript"
+    "typescript",
+    "node.js",
+    "socket"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quastar/fantasy-nat-sdk.git"
+  },
   "author": "sun",
   "license": "ISC",
   "devDependencies": {
