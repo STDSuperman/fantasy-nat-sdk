@@ -20,9 +20,7 @@ class FantasyNatService extends events_1.default {
     constructor(props) {
         super();
         this.exportPorts = [];
-        this.pipeTunnelSockets = [];
         this.config = Object.assign(Object.assign({}, defaultConfig_1.config), props);
-        this.run();
     }
     run() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -95,7 +93,7 @@ class FantasyNatService extends events_1.default {
             };
         });
         this.emit('final', finalLog);
-        console.log('operation success,click these url to show', finalLog);
+        console.log(`[${new Date().toLocaleString()}]  translate success,click the url to show`, finalLog);
     }
 }
 exports.FantasyNatService = FantasyNatService;

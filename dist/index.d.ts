@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import EventEmitter from 'events';
-import { DefaultConfig, AskForPortsInfo, FinalLog } from './config/defaultConfig';
+import { DefaultConfig, AskForPortsInfo, FinalLog, CustomConfig } from './config/defaultConfig';
 interface FantasyNatService {
     on(event: 'connectRemoteSuc', listener: (ports: Array<AskForPortsInfo>) => void): this;
     on(event: 'error', listener: (error: string) => void): this;
@@ -10,8 +10,7 @@ interface FantasyNatService {
 declare class FantasyNatService extends EventEmitter {
     readonly config: DefaultConfig;
     private exportPorts;
-    private pipeTunnelSockets;
-    constructor(props: DefaultConfig);
+    constructor(props: CustomConfig);
     run(): Promise<void>;
     /**
      * 批量申请对外暴露的端口
@@ -28,4 +27,4 @@ declare class FantasyNatService extends EventEmitter {
      */
     private _finalConsole;
 }
-export { FantasyNatService };
+export { FantasyNatService, CustomConfig };

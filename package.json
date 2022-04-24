@@ -1,5 +1,5 @@
 {
-  "name": "fantasy-nat-tool",
+  "name": "fantasy-nat-sdk",
   "version": "1.0.1",
   "description": "a tool for NAT service",
   "main": "./dist/index.js",

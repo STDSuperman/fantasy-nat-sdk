@@ -54,16 +54,17 @@ function createServer(exportsLocalPort, localServicePort, localServiceHost) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise((resolve, reject) => {
             const server = net_1.default.createServer((s) => {
-                const conn = net_1.default.connect({
-                    port: localServicePort,
-                    host: localServiceHost
+                const connection = net_1.default.connect({
+                    host: localServiceHost,
+                    port: localServicePort
                 }, () => {
-                    conn.on('data', (data) => {
-                        s.write(data);
-                    });
+                    s.pipe(connection).pipe(s);
                 });
-                s.on('data', (data) => {
-                    conn.write(data);
+                connection.on('error', () => {
+                    connection.end();
+                });
+                s.on('error', () => {
+                    s.end();
                 });
             }).listen(exportsLocalPort);
             server.on('listening', () => {
@@ -76,4 +77,3 @@ function createServer(exportsLocalPort, localServicePort, localServiceHost) {
     });
 }
 exports.createServer = createServer;
-net_1.default.Socket;
